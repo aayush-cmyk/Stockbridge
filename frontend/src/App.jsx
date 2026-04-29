@@ -37,25 +37,25 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
+
         {/* Supplier Routes */}
-        <Route 
-          path="/supplier/*" 
+        <Route
+          path="/supplier/*"
           element={
             <PrivateRoute roleRequired="supplier">
               <SupplierDashboard />
             </PrivateRoute>
-          } 
+          }
         />
-        
+
         {/* Retailer Routes */}
-        <Route 
-          path="/retailer/*" 
+        <Route
+          path="/retailer/*"
           element={
             <PrivateRoute roleRequired="retailer">
               <RetailerDashboard />
             </PrivateRoute>
-          } 
+          }
         />
       </Routes>
     </Router>

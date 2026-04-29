@@ -27,7 +27,7 @@ export default function Sidebar({ role }) {
   return (
     <>
       <div className={`sidebar-overlay ${isOpen ? 'active' : ''}`} onClick={closeSidebar}></div>
-      
+
       <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? '✕' : '☰'}
       </button>
@@ -43,7 +43,7 @@ export default function Sidebar({ role }) {
             </button>
           )}
         </div>
-        
+
         <div style={{ padding: '0 1.5rem', marginBottom: '2rem', marginTop: '1rem' }}>
           <p className="text-muted" style={{ fontSize: '0.75rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
             {role} portal
@@ -52,12 +52,12 @@ export default function Sidebar({ role }) {
 
         <nav style={{ flex: 1 }}>
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.path || 
-                             (link.path !== '/supplier' && link.path !== '/retailer' && location.pathname.startsWith(link.path));
+            const isActive = location.pathname === link.path ||
+              (link.path !== '/supplier' && link.path !== '/retailer' && location.pathname.startsWith(link.path));
             return (
-              <Link 
-                key={link.name} 
-                to={link.path} 
+              <Link
+                key={link.name}
+                to={link.path}
                 className={`nav-link ${isActive ? 'active' : ''}`}
                 onClick={closeSidebar}
               >

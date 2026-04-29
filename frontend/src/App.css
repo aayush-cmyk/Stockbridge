@@ -25,7 +25,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .landing-logo {
@@ -162,9 +162,17 @@
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* TRUST BAR */
@@ -504,7 +512,8 @@
 
 .auth-btn {
   width: 100%;
-  background-color: var(--lp-primary); /* Fallback */
+  background-color: var(--lp-primary);
+  /* Fallback */
   background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
   color: #ffffff;
   border: none;
@@ -562,8 +571,13 @@
 
 /* RESPONSIVE STYLES */
 @media (max-width: 1024px) {
-  .landing-hero-content h1 { font-size: 3rem; }
-  .landing-hero-container { gap: 2rem; }
+  .landing-hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .landing-hero-container {
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -572,7 +586,8 @@
   }
 
   .landing-nav-links {
-    display: none; /* Hide nav links on mobile for simplicity, or use a burger menu */
+    display: none;
+    /* Hide nav links on mobile for simplicity, or use a burger menu */
   }
 
   .landing-hero-container {
@@ -625,6 +640,11 @@
 }
 
 @media (max-width: 480px) {
-  .landing-hero-content h1 { font-size: 2rem; }
-  .hero-stats { flex-wrap: wrap; }
+  .landing-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+  }
 }
