@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build output
+frontend/dist/
+
+# Environment variables — NEVER commit these
+.env
+backend/.env
+frontend/.env*
+
+# SQLite database (local only — cloud uses PostgreSQL)
+*.sqlite
+database.sqlite
+backend/database.sqlite
+
+# Uploaded files (local only — not needed on Vercel)
+backend/uploads/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
