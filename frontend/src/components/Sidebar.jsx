@@ -28,7 +28,7 @@ export default function Sidebar({ role }) {
     <>
       {/* 1. OVERLAY - Only visible when open */}
       <div className={`sidebar-overlay ${isOpen ? 'active' : ''}`} onClick={closeSidebar}></div>
-      
+
       {/* 2. FLOATING BUTTON - Must be OUTSIDE the sidebar div so it stays on screen */}
       <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
         {isOpen ? '✕' : '☰'}
@@ -44,7 +44,7 @@ export default function Sidebar({ role }) {
             ✕
           </button>
         </div>
-        
+
         <div style={{ padding: '0 1.5rem', marginBottom: '2rem', marginTop: '1rem' }}>
           <p className="text-muted" style={{ fontSize: '0.75rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
             {role} portal
@@ -53,12 +53,12 @@ export default function Sidebar({ role }) {
 
         <nav style={{ flex: 1 }}>
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.path || 
-                             (link.path !== '/supplier' && link.path !== '/retailer' && location.pathname.startsWith(link.path));
+            const isActive = location.pathname === link.path ||
+              (link.path !== '/supplier' && link.path !== '/retailer' && location.pathname.startsWith(link.path));
             return (
-              <Link 
-                key={link.name} 
-                to={link.path} 
+              <Link
+                key={link.name}
+                to={link.path}
                 className={`nav-link ${isActive ? 'active' : ''}`}
                 onClick={closeSidebar}
               >
@@ -72,8 +72,8 @@ export default function Sidebar({ role }) {
         <div className="sidebar-bottom">
           <div style={{ padding: '0 1rem' }}>
             <p className="text-muted" style={{ fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '0.5rem', paddingLeft: '0.5rem' }}>Settings</p>
-            <Link 
-              to="profile" 
+            <Link
+              to="profile"
               className={`nav-link ${location.pathname.includes('profile') ? 'active' : ''}`}
               onClick={closeSidebar}
               style={{ margin: '0.25rem 0' }}
