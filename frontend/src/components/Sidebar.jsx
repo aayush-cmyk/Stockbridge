@@ -33,11 +33,18 @@ export default function Sidebar({ role }) {
       </button>
 
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <Link to="/" className="sidebar-logo" style={{ textDecoration: 'none' }}>
-          <span style={{ fontSize: '1.25rem' }}>📦</span> StockBridge
-        </Link>
+        <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: '1rem' }}>
+          <Link to="/" className="sidebar-logo" style={{ textDecoration: 'none', marginBottom: 0 }}>
+            <span style={{ fontSize: '1.25rem' }}>📦</span> StockBridge
+          </Link>
+          {isOpen && (
+            <button className="mobile-close" onClick={closeSidebar} style={{ display: 'none', border: 'none', background: 'transparent', fontSize: '1.5rem', color: 'var(--text-muted)' }}>
+              ✕
+            </button>
+          )}
+        </div>
         
-        <div style={{ padding: '0 1.5rem', marginBottom: '2rem' }}>
+        <div style={{ padding: '0 1.5rem', marginBottom: '2rem', marginTop: '1rem' }}>
           <p className="text-muted" style={{ fontSize: '0.75rem', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>
             {role} portal
           </p>
