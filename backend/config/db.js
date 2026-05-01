@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
-const sqlite3 = require('sqlite3').verbose();
-const { open } = require('sqlite');
+
+let pool = null;
 
 let pool = null;
 let dbPromise = null;
@@ -15,6 +15,8 @@ if (usePostgres) {
   });
   console.log('Using PostgreSQL database');
 } else {
+  const sqlite3 = require('sqlite3').verbose();
+  const { open } = require('sqlite');
   dbPromise = open({
     filename: './database.sqlite',
     driver: sqlite3.Database
