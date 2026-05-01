@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import InvoiceModal from '../components/InvoiceModal';
 import ProfileView from '../components/ProfileView';
+import AiInsights from '../components/AiInsights';
 import axios from 'axios';
 
 function InventoryView({ products, loadProducts }) {
@@ -471,6 +472,9 @@ export default function SupplierDashboard() {
                   <span className="stat-title">Low Stock Alerts</span>
                   <span className="stat-value" style={{ color: lowStockCount > 0 ? 'var(--danger)' : 'var(--text-main)' }}>{lowStockCount}</span>
                 </div>
+              </div>
+              <div style={{ marginTop: '2rem' }}>
+                <AiInsights />
               </div>
             </div>
           } />
