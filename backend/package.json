@@ -21,7 +21,9 @@
     "mysql2": "^3.20.0",
     "nodemailer": "^8.0.6",
     "pg": "^8.11.3",
-    "razorpay": "^2.9.6",
+    "razorpay": "^2.9.6"
+  },
+  "optionalDependencies": {
     "sqlite": "^5.1.1",
     "sqlite3": "^6.0.1"
   },

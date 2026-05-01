@@ -13,19 +13,38 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Health check - test if function loads at all
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    db: process.env.DATABASE_URL ? 'postgres' : 'sqlite',
+    node: process.version
+  });
+});
+
 // Import Routes
-const authRoutes = require('./routes/auth');
-const productsRoutes = require('./routes/products');
-const ordersRoutes = require('./routes/orders');
-const paymentsRoutes = require('./routes/payments');
-const aiRoutes = require('./routes/ai');
+let authRoutes, productsRoutes, ordersRoutes, paymentsRoutes, aiRoutes;
+try {
+  authRoutes = require('./routes/auth');
+  productsRoutes = require('./routes/products');
+  ordersRoutes = require('./routes/orders');
+  paymentsRoutes = require('./routes/payments');
+  aiRoutes = require('./routes/ai');
+} catch (err) {
+  console.error('Failed to load routes:', err.message);
+  app.use('/api', (req, res) => {
+    res.status(500).json({ msg: 'Route loading failed', error: err.message });
+  });
+}
 
 // Route Middlewares
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productsRoutes);
-app.use('/api/orders', ordersRoutes);
-app.use('/api/payments', paymentsRoutes);
-app.use('/api/ai', aiRoutes);
+if (authRoutes) {
+  app.use('/api/auth', authRoutes);
+  app.use('/api/products', productsRoutes);
+  app.use('/api/orders', ordersRoutes);
+  app.use('/api/payments', paymentsRoutes);
+  app.use('/api/ai', aiRoutes);
+}
 
 // --- SERVE FRONTEND IN PRODUCTION ---
 if (process.env.NODE_ENV === 'production') {
