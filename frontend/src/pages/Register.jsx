@@ -27,7 +27,9 @@ export default function Register() {
       
       res.data.role === 'supplier' ? navigate('/supplier') : navigate('/retailer');
     } catch (err) {
-      setError(err.response?.data?.msg || 'Error registering');
+      console.error('Registration Error:', err);
+      const msg = err.response?.data?.msg || err.message || 'Error registering';
+      setError(err.response ? `Server Error (${err.response.status}): ${msg}` : `Network Error: ${msg}. Is the backend running?`);
     } finally {
       setLoading(false);
     }

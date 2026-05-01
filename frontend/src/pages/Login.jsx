@@ -97,7 +97,9 @@ export default function Login() {
       const res = await axios.post(`${API}/login`, { email, password });
       saveSession(res.data);
     } catch (err) {
-      setError(err.response?.data?.msg || 'Error logging in');
+      console.error('Login Error:', err);
+      const msg = err.response?.data?.msg || err.message || 'Error logging in';
+      setError(err.response ? `Server Error (${err.response.status}): ${msg}` : `Network Error: ${msg}. Is the backend running?`);
     } finally { setLoading(false); }
   };
 
