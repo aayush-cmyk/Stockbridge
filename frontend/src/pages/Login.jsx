@@ -98,7 +98,7 @@ export default function Login() {
       saveSession(res.data);
     } catch (err) {
       console.error('Login Error:', err);
-      const msg = err.response?.data?.msg || err.response?.data?.error || err.message || 'Error logging in';
+      const msg = err.response?.data?.msg || (typeof err.response?.data?.error === 'object' ? JSON.stringify(err.response.data.error) : err.response?.data?.error) || err.message || 'Error logging in';
       setError(err.response ? `Server Error (${err.response.status}): ${msg}` : `Network Error: ${msg}. Is the backend running?`);
     } finally { setLoading(false); }
   };

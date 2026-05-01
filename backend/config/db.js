@@ -1,8 +1,6 @@
 const { Pool } = require('pg');
 
 let pool = null;
-
-let pool = null;
 let dbPromise = null;
 
 // Use PostgreSQL if DATABASE_URL is present, otherwise use SQLite

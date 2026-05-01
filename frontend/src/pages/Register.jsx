@@ -28,7 +28,7 @@ export default function Register() {
       res.data.role === 'supplier' ? navigate('/supplier') : navigate('/retailer');
     } catch (err) {
       console.error('Registration Error:', err);
-      const msg = err.response?.data?.msg || err.message || 'Error registering';
+      const msg = err.response?.data?.msg || (typeof err.response?.data?.error === 'object' ? JSON.stringify(err.response.data.error) : err.response?.data?.error) || err.message || 'Error registering';
       setError(err.response ? `Server Error (${err.response.status}): ${msg}` : `Network Error: ${msg}. Is the backend running?`);
     } finally {
       setLoading(false);
