@@ -42,8 +42,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Database initialization
-require('./config/init_db');
+// Database initialization (Tables are already initialized in Neon)
+// require('./config/init_db');
 
 const PORT = process.env.PORT || 5000;
 
