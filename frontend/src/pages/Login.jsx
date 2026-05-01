@@ -47,7 +47,7 @@ function OtpInput({ onComplete }) {
           value={d}
           onKeyDown={e => handleKey(e, i)}
           onPaste={handlePaste}
-          onChange={() => {}}
+          onChange={() => { }}
           className="otp-input-field"
           style={{
             borderColor: d ? 'var(--lp-primary)' : '#e2e8f0',
@@ -98,7 +98,7 @@ export default function Login() {
       saveSession(res.data);
     } catch (err) {
       console.error('Login Error:', err);
-      const msg = err.response?.data?.msg || err.message || 'Error logging in';
+      const msg = err.response?.data?.msg || err.response?.data?.error || err.message || 'Error logging in';
       setError(err.response ? `Server Error (${err.response.status}): ${msg}` : `Network Error: ${msg}. Is the backend running?`);
     } finally { setLoading(false); }
   };
@@ -136,7 +136,7 @@ export default function Login() {
   return (
     <div className="auth-container">
       <div className="auth-card animate-fade-in">
-        
+
         <div className="auth-header">
           <Link to="/" style={{ textDecoration: 'none' }}>
             <div className="auth-logo-box">📦</div>
@@ -182,24 +182,24 @@ export default function Login() {
           <form onSubmit={handlePasswordLogin}>
             <div className="auth-input-group">
               <label className="auth-label">Email Address</label>
-              <input 
-                type="email" 
-                className="auth-input" 
+              <input
+                type="email"
+                className="auth-input"
                 required
                 placeholder="name@company.com"
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
             </div>
             <div className="auth-input-group">
               <label className="auth-label">Password</label>
-              <input 
-                type="password" 
-                className="auth-input" 
+              <input
+                type="password"
+                className="auth-input"
                 required
                 placeholder="••••••••"
-                value={password} 
-                onChange={e => setPassword(e.target.value)} 
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
             </div>
             <button type="submit" className="auth-btn" disabled={loading}>
@@ -213,13 +213,13 @@ export default function Login() {
           <form onSubmit={handleSendOtp}>
             <div className="auth-input-group">
               <label className="auth-label">Email Address</label>
-              <input 
-                type="email" 
-                className="auth-input" 
+              <input
+                type="email"
+                className="auth-input"
                 required
                 placeholder="Enter your registered email"
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
             </div>
             <button type="submit" className="auth-btn" disabled={loading}>
@@ -251,7 +251,7 @@ export default function Login() {
               ) : (
                 <p style={{ color: '#f87171', fontSize: '0.85rem', fontWeight: 600 }}>Code expired</p>
               )}
-              
+
               <button
                 onClick={sendOtp}
                 disabled={remaining > 240 || loading}
@@ -287,10 +287,10 @@ export default function Login() {
           Don't have an account? <Link to="/register">Create one for free</Link>
         </div>
 
-        <div style={{ 
-          marginTop: '2rem', textAlign: 'center', display: 'flex', 
+        <div style={{
+          marginTop: '2rem', textAlign: 'center', display: 'flex',
           alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-          color: '#475569', fontSize: '0.75rem' 
+          color: '#475569', fontSize: '0.75rem'
         }}>
           <span style={{ fontSize: '1rem' }}>🛡️</span> Secure 256-bit SSL Encryption
         </div>
